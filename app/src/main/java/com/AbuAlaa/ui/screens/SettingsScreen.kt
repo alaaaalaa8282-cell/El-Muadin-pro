@@ -454,6 +454,7 @@ fun SettingsScreen(
                 }
             }
 
+
             // Zekr Settings
             item {
                 val ctx = LocalContext.current
@@ -673,6 +674,7 @@ fun SettingsScreen(
 
         } // ← LazyColumn
     } // ← Box
+}
 
 @Composable
 private fun SettingsCard(
