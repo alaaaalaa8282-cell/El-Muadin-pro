@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Islamic Gold/Warm Theme -->
+    <color name="islamic_gold">#FFD4AF37</color>
+    <color name="islamic_gold_dark">#FFB8860B</color>
+    <color name="warm_beige">#FFFFF8E7</color>
+    <color name="warm_cream">#FFFFFBF0</color>
+    <color name="deep_brown">#FF5D4037</color>
+    <color name="accent_teal">#FF008080</color>
+    <color name="soft_orange">#FFE6A23C</color>
+    
+    <!-- Prayer Colors -->
+    <color name="fajr_color">#FF1A237E</color>
+    <color name="dhuhr_color">#FFFDD835</color>
+    <color name="asr_color">#FFFF8F00</color>
+    <color name="maghrib_color">#FFFF5722</color>
+    <color name="isha_color">#FF311B92</color>
+</resources>

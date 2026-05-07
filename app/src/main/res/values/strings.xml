@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name"> مؤذن محمد عبد العظيم</string>
+    <string name="notif_prayer_title"> تنبيه محمد عبد العظيم للصلاة</string>
+    <string name="notif_prayer_body">حان وقت الصلاة، رحمة الله على الوالد محمد عبد العظيم 🤲    </string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">الصلاة</string>
+    <string name="nav_calendar">التقويم</string>
+    <string name="nav_qibla">القبلة</string>
+    <string name="nav_azkar">الأذكار</string>
+    <string name="nav_settings">الإعدادات</string>
+    
+    <!-- Prayers -->
+    <string name="prayer_fajr">الفجر</string>
+    <string name="prayer_sunrise">الشروق</string>
+    <string name="prayer_dhuhr">الظهر</string>
+    <string name="prayer_asr">العصر</string>
+    <string name="prayer_maghrib">المغرب</string>
+    <string name="prayer_isha">العشاء</string>
+    <string name="prayer_imsak">الإمساك</string>
+    
+    <!-- Azkar -->
+    <string name="azkar_morning">أذكار الصباح</string>
+    <string name="azkar_evening">أذكار المساء</string>
+    
+    <!-- Settings -->
+    <string name="settings_location">الموقع</string>
+    <string name="settings_location_auto">تلقائي (GPS)</string>
+    <string name="settings_location_manual">يدوي</string>
+    <string name="settings_calculation">طريقة الحساب</string>
+    <string name="settings_notifications">الإشعارات</string>
+    <string name="settings_adhan_sound">صوت الأذان</string>
+    <string name="settings_ads">الإعلانات</string>
+    
+    <!-- Qibla -->
+    <string name="qibla_direction">اتجاه القبلة</string>
+    <string name="qibla_calibrate">معايرة البوصلة</string>
+    
+    <!-- Calendar -->
+    <string name="calendar_hijri">التقويم الهجري</string>
+    <string name="calendar_ramadan">رمضان</string>
+    <string name="calendar_suhoor">السحور</string>
+    <string name="calendar_iftar">الإفطار</string>
+    
+    <!-- General -->
+    <string name="refresh">تحديث</string>
+    <string name="retry">إعادة</string>
+    <string name="done">تم</string>
+    <string name="copy">نسخ</string>
+    <string name="next_prayer">الصلاة القادمة</string>
+<string name="sobhanallah_wabehemdeh">سبحان الله وبحمده</string>
+</resources>

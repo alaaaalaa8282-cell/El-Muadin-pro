@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1a1a2e"
+    android:layoutDirection="rtl">
+
+    <!-- صورة الخلفية بتاعة أبوك -->
+    <ImageView
+        android:id="@+id/father_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/father_bg"
+        android:scaleType="centerCrop"
+        android:alpha="0.18"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- نجوم زخرفة -->
+    <TextView
+        android:id="@+id/star_decoration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✦ ✦ ✦"
+        android:textColor="#c9a84c"
+        android:textSize="24sp"
+        android:letterSpacing="0.3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="80dp"/>
+
+    <!-- هلال -->
+    <TextView
+        android:id="@+id/moon_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🌙"
+        android:textSize="80sp"
+        app:layout_constraintTop_toBottomOf="@id/star_decoration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="3dp"/>
+
+    <!-- اسم الصلاة -->
+    <TextView
+        android:id="@+id/prayer_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الفجر"
+        android:textColor="#c9a84c"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        app:layout_constraintTop_toBottomOf="@id/moon_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- نص حان وقت الصلاة -->
+    <TextView
+        android:id="@+id/athan_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="حان وقت صلاة الفجر"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/prayer_name_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- فاصل -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="100dp"
+        android:layout_height="2dp"
+        android:background="#c9a84c"
+        app:layout_constraintTop_toBottomOf="@id/athan_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- الله أكبر -->
+    <TextView
+        android:id="@+id/allahu_akbar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الله أكبر"
+        android:textColor="#c9a84c"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- زرار إيقاف -->
+    <Button
+        android:id="@+id/stop_athan_button"
+        android:layout_width="200dp"
+        android:layout_height="56dp"
+        android:text="إيقاف الأذان"
+        android:textSize="18sp"
+        android:textColor="#1a1a2e"
+        android:backgroundTint="#c9a84c"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
