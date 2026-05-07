@@ -454,45 +454,6 @@ fun SettingsScreen(
                 }
             }
 
-            // Ads Settings
-            item {
-                SettingsCard(
-                    title = "الإعلانات",
-                    icon = Icons.Default.Block
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Switch(
-                            colors = SwitchDefaults.colors(
-                                checkedThumbColor = Color.White,
-                                checkedTrackColor = MaterialTheme.colorScheme.primary
-                            )
-                        )
-                    }
-
-                        Spacer(Modifier.height(12.dp))
-                        Text(
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                        Slider(
-                            valueRange = 0f..60f,
-                            steps = 5,
-                            colors = SliderDefaults.colors(
-                                thumbColor = MaterialTheme.colorScheme.primary,
-                                activeTrackColor = MaterialTheme.colorScheme.primary
-                            )
-                        )
-                        Text(
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-            }
-
             // Zekr Settings
             item {
                 val ctx = LocalContext.current
@@ -712,7 +673,6 @@ fun SettingsScreen(
 
         } // ← LazyColumn
     } // ← Box
-}
 
 @Composable
 private fun SettingsCard(

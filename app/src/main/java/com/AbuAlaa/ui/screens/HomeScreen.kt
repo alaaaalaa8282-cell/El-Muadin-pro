@@ -446,6 +446,7 @@ fun HomeScreen(
             }
     }
 }
+}
 
 @Composable
 fun AzkarCarouselHeader(azkarList: List<ZikrItem>, isMorning: Boolean, title: String) {
