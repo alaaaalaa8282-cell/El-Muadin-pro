@@ -583,11 +583,12 @@ fun SettingsScreen(
                         Slider(
                             value = zekrVolume,
                             onValueChange = {
-                                zekrVolume = it
-                                ZekrPrefs.setVolume(ctx, it)
+                                zekrVolume = it          // تحديث الـ UI مباشرة (ناعم)
+                            },
+                            onValueChangeFinished = {
+                                ZekrPrefs.setVolume(ctx, zekrVolume) // حفظ فقط عند الإفلات
                             },
                             valueRange = 0f..1f,
-                            steps = 9,
                             colors = SliderDefaults.colors(
                                 thumbColor = MaterialTheme.colorScheme.primary,
                                 activeTrackColor = MaterialTheme.colorScheme.primary
