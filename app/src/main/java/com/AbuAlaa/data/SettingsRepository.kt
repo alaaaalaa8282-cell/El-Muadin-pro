@@ -127,6 +127,13 @@ class SettingsRepository @Inject constructor(
         return Triple(lat, lng, city)
     }
 
+    suspend fun clearLocationCache() =
+        context.dataStore.edit {
+            it.remove(Keys.CACHED_LAT)
+            it.remove(Keys.CACHED_LNG)
+            it.remove(Keys.CACHED_CITY)
+        }
+
     suspend fun setLocationMode(mode: LocationMode) =
         context.dataStore.edit { it[Keys.LOCATION_MODE] = mode.name }
 
