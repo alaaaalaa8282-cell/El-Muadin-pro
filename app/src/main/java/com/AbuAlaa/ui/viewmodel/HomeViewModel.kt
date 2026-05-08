@@ -67,6 +67,8 @@ class HomeViewModel @Inject constructor(
                 val cachedLoc = settingsRepo.getLocationCache()
                 // *** التعديل هنا: val day = ***
                 val day = if (cachedLoc != null) {
+                    // حفظ اسم المدينة من الـ cache مباشرة بدون loading
+                    _state.value = _state.value.copy(cityName = cachedLoc.third)
                     prayerRepo.getPrayerDayByCoordinates(date, cachedLoc.first, cachedLoc.second, s.calculationMethod)
                 } else {
                     val loc = locationRepo.getLastKnownLocation()
@@ -132,6 +134,8 @@ class HomeViewModel @Inject constructor(
                 if (s.locationMode == LocationMode.AUTO) {
                     val cachedLoc = settingsRepo.getLocationCache()
                     if (cachedLoc != null) {
+                        // يستخدم الـ cache مباشرة بدون GPS - يحدث cityName من المحفوظ
+                        _state.value = _state.value.copy(cityName = cachedLoc.third)
                         prayerRepo.getPrayerDayByCoordinates(date, cachedLoc.first, cachedLoc.second, s.calculationMethod)
                     } else {
                         val loc = locationRepo.getLastKnownLocation()
@@ -198,11 +202,17 @@ class HomeViewModel @Inject constructor(
             launch {
                 runCatching {
                     if (s.locationMode == LocationMode.AUTO) {
-                        val loc = locationRepo.getLastKnownLocation()
-                        if (loc != null) {
-                            prayerRepo.fetchAndCacheWeek(loc.latitude, loc.longitude, s.calculationMethod)
+                        // نستخدم الـ cache مباشرة بدون GPS call جديدة
+                        val cachedLoc = settingsRepo.getLocationCache()
+                        if (cachedLoc != null) {
+                            prayerRepo.fetchAndCacheWeek(cachedLoc.first, cachedLoc.second, s.calculationMethod)
                         } else {
-                            prayerRepo.fetchAndCacheWeekByCity(s.manualCity, s.manualCountry, s.calculationMethod)
+                            val loc = locationRepo.getFreshLocation()
+                            if (loc != null) {
+                                prayerRepo.fetchAndCacheWeek(loc.latitude, loc.longitude, s.calculationMethod)
+                            } else {
+                                prayerRepo.fetchAndCacheWeekByCity(s.manualCity, s.manualCountry, s.calculationMethod)
+                            }
                         }
                     } else {
                         prayerRepo.fetchAndCacheWeekByCity(s.manualCity, s.manualCountry, s.calculationMethod)

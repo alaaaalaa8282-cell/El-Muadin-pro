@@ -29,8 +29,15 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun setLocationMode(mode: LocationMode) = viewModelScope.launch { repo.setLocationMode(mode) }
-    fun setManual(city: String, country: String) = viewModelScope.launch { repo.setManualLocation(city, country) }
+    fun setLocationMode(mode: LocationMode) = viewModelScope.launch {
+        repo.setLocationMode(mode)
+        // لو رجع لـ AUTO امسح الـ cache اليدوي عشان يجيب GPS جديد
+        if (mode == LocationMode.AUTO) repo.clearLocationCache()
+    }
+    fun setManual(city: String, country: String) = viewModelScope.launch {
+        repo.setManualLocation(city, country)
+        repo.clearLocationCache()  // امسح الـ GPS cache عشان يستخدم المدينة اليدوية
+    }
     fun setMethod(method: CalculationMethod) = viewModelScope.launch { repo.setCalculationMethod(method) }
     fun setNotifications(enabled: Boolean) = viewModelScope.launch { repo.setNotificationsEnabled(enabled) }
     fun setAdhanSound(sound: AdhanSound) = viewModelScope.launch { repo.setAdhanSound(sound) }
