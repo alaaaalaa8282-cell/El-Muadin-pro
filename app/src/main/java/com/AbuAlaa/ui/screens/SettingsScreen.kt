@@ -590,7 +590,7 @@ fun SettingsScreen(
                                 zekrVolume = it          // تحديث الـ UI مباشرة (ناعم)
                             },
                             onValueChangeFinished = {
-                                ZekrPrefs.setVolume(ctx, zekrVolume) // حفظ فقط عند الإفلات
+                          ZekrPrefs.setVolume(ctx.applicationContext, zekrVolume)
                             },
                             valueRange = 0f..1f,
                             colors = SliderDefaults.colors(
