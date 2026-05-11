@@ -125,7 +125,7 @@ class HomeViewModel @Inject constructor(
 
     fun refresh() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true, error = null)
+            _state.value = _state.value.copy(isLoading = _state.value.day == null, error = null)
             val s = settingsRepo.settingsFlow.first()
             _state.value = _state.value.copy(settings = s)
 
