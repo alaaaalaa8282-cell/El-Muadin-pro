@@ -488,8 +488,8 @@ fun SettingsScreen(
                             onCheckedChange = { v ->
                                 zekrEnabled = v
                                 ZekrPrefs.setEnabled(ctx, v)
-                                if (v) ZekrScheduler.schedule(ctx, selectedInterval.toLong())
-                                else ZekrScheduler.cancel(ctx)
+                                if (v) ZekrScheduler.schedule(ctx.applicationContext, selectedInterval.toLong())
+                                else ZekrScheduler.cancel(ctx.applicationContext)
                             }
                         )
                     }
@@ -519,7 +519,7 @@ fun SettingsScreen(
                                         text = { Text("$min دقيقة") },
                                         onClick = {
                                             selectedInterval = min
-                                            ZekrPrefs.setIntervalInMinutes(ctx, min)
+                                            if (zekrEnabled) ZekrScheduler.schedule(ctx.applicationContext, min.toLong())
                                             if (zekrEnabled) ZekrScheduler.schedule(ctx, min.toLong())
                                             expanded2 = false
                                         }
