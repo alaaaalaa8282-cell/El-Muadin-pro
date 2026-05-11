@@ -22,7 +22,7 @@ class ZekrReceiver : BroadcastReceiver() {
             ZekrData.zekrList[index]
         }
 
-        val volume = ZekrPrefs.getVolume(context)
+        val volume = ZekrPrefs.getVolume(context.applicationContext)
         val intervalMinutes = ZekrPrefs.getIntervalInMinutes(context)
 
         // تشغيل الصوت عبر Foreground Service عشان ما يتوقفش لما بتلمس ستارة الإشعارات
