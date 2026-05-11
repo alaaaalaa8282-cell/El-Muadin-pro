@@ -83,7 +83,7 @@
     android:name=".alarm.SalahReceiver"
     android:exported="false" />
   <service android:name=".alarm.SalahSoundService" android:foregroundServiceType="mediaPlayback" />
- <service android:name=".alarm.ZekrSoundService" android:foregroundServiceType="mediaPlayback" />
+ <service android:name=".alarm.ZekrSoundService" android:foregroundServiceType="mediaPlayback" android:stopWithTask="false" />
 <receiver android:name=".alarm.ZekrReceiver" android:exported="false" />
     </application>
 
