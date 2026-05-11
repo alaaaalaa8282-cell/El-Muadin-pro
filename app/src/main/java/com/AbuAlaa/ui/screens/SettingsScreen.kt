@@ -463,7 +463,7 @@ fun SettingsScreen(
             // Zekr Settings
             item {
                 var zekrEnabled by remember { mutableStateOf(ZekrPrefs.isEnabled(ctx)) }
-                var selectedInterval by remember { mutableStateOf(ZekrPrefs.getIntervalInMinutes(ctx)) }
+                var selectedInterval by remember { mutableStateOf(ZekrPrefs.getIntervalInMinutes(ctx.applicationContext)) }
                 var playbackMode by remember { mutableStateOf(ZekrPrefs.getPlaybackMode(ctx)) }
                 var selectedRepeatIndex by remember { mutableStateOf(ZekrPrefs.getRepeatIndex(ctx)) }
                 var zekrVolume by remember { mutableStateOf(ZekrPrefs.getVolume(ctx)) }
@@ -519,7 +519,7 @@ fun SettingsScreen(
                                         text = { Text("$min دقيقة") },
                                         onClick = {
                                             selectedInterval = min
-                                            ZekrPrefs.setIntervalInMinutes(ctx, min)
+                                            ZekrPrefs.setIntervalInMinutes(ctx.applicationContext, min)
                                             if (zekrEnabled) ZekrScheduler.schedule(ctx, min.toLong())
                                             expanded2 = false
                                         }
