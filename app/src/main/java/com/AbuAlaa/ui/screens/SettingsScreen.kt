@@ -585,19 +585,18 @@ fun SettingsScreen(
                         Spacer(Modifier.height(12.dp))
                         Text("مستوى الصوت 🔊", style = MaterialTheme.typography.bodySmall)
                         Slider(
-                            value = zekrVolume,
-                            onValueChange = {
-                                zekrVolume = it          // تحديث الـ UI مباشرة (ناعم)
-                            },
-                            onValueChangeFinished = {
-                          ZekrPrefs.setVolume(ctx.applicationContext, zekrVolume)
-                            },
-                            valueRange = 0f..1f,
-                            colors = SliderDefaults.colors(
-                                thumbColor = MaterialTheme.colorScheme.primary,
-                                activeTrackColor = MaterialTheme.colorScheme.primary
-                            )
-                        )
+                          value = zekrVolume,
+                          onValueChange = { newVal ->
+                          zekrVolume = newVal
+                         ZekrPrefs.setVolume(ctx, newVal)
+                        },
+                     valueRange = 0f..1f,
+                    colors = SliderDefaults.colors(
+                    thumbColor = MaterialTheme.colorScheme.primary,
+                     activeTrackColor = MaterialTheme.colorScheme.primary
+                    ),
+                  modifier = Modifier.fillMaxWidth()
+                     )
                         Text(
                             "${(zekrVolume * 100).toInt()}%",
                             style = MaterialTheme.typography.bodySmall,
