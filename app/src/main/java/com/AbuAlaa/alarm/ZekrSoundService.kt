@@ -104,7 +104,7 @@ class ZekrSoundService : Service() {
             return START_NOT_STICKY
         }
 
-        val logVolume = volume
+        val logVolume = if (volume == 0f) 0f else Math.pow(volume.toDouble(), 2.0).toFloat()
         mediaPlayer?.release()
         mediaPlayer = MediaPlayer.create(this, resId)
         mediaPlayer?.apply {
