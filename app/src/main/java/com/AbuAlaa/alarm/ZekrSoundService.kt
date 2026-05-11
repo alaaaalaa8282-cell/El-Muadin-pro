@@ -44,8 +44,9 @@ class ZekrSoundService : Service() {
 
             // سحب مؤقت (مكالمة واردة مثلاً)
             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT -> {
-                focusLost = true
-                stopPlaybackAndReschedule()
+    focusLost = true
+    mediaPlayer?.pause()
+}
             }
 
             // تخفيض الصوت مؤقتاً - نكمل بصوت أقل
@@ -54,7 +55,10 @@ class ZekrSoundService : Service() {
             }
 
             // استرجاع الفوكس - الذكر انتهى أصلاً وأُعيدت الجدولة، لا نفعل شيئاً
-            AudioManager.AUDIOFOCUS_GAIN -> { /* no-op */ }
+            AudioManager.AUDIOFOCUS_GAIN -> {
+    mediaPlayer?.start()
+    focusLost = false
+}
         }
     }
 
