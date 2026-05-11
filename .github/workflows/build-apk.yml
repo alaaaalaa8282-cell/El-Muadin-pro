@@ -18,32 +18,29 @@ jobs:
 
       - run: chmod +x gradlew
 
-      - name: Generate Keystore
+      - name: Decode Keystore
         run: |
-          keytool -genkeypair \
-            -alias almuadhin \
-            -keyalg RSA -keysize 2048 \
-            -validity 9125 \
-            -keystore almuadhin.jks \
-            -storepass almuadhin123 \
-            -keypass almuadhin123 \
-            -dname "CN=ALmuadhin,O=Islamic,C=EG" \
-            -noprompt
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > keystore.p12
 
       - name: Build APK
         run: |
           ./gradlew assembleRelease \
-            -Pandroid.injected.signing.store.file=${{ github.workspace }}/almuadhin.jks \
-            -Pandroid.injected.signing.store.password=almuadhin123 \
-            -Pandroid.injected.signing.key.alias=almuadhin \
-            -Pandroid.injected.signing.key.password=almuadhin123
+            -Pandroid.injected.signing.store.file=${{ github.workspace }}/keystore.p12 \
+            -Pandroid.injected.signing.store.password=${{ secrets.STORE_PASSWORD }} \
+            -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+            -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+
+      - name: Rename APK
+        run: |
+          mv app/build/outputs/apk/release/app-release.apk \
+             app/build/outputs/apk/release/app-moazen.apk
 
       - name: Create Release with APK
         uses: softprops/action-gh-release@v2
         with:
           tag_name: "build-${{ github.run_number }}"
           name: "مؤذن محمد عبد العظيم - إصدار ${{ github.run_number }}"
-          files: app/build/outputs/apk/release/*.apk
+          files: app/build/outputs/apk/release/app-moazen.apk
           draft: false
           prerelease: false
         env:
