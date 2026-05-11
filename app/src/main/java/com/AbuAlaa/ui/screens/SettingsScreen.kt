@@ -462,7 +462,6 @@ fun SettingsScreen(
 
             // Zekr Settings
             item {
-                val ctx = LocalContext.current
                 var zekrEnabled by remember { mutableStateOf(ZekrPrefs.isEnabled(ctx)) }
                 var selectedInterval by remember { mutableStateOf(ZekrPrefs.getIntervalInMinutes(ctx)) }
                 var playbackMode by remember { mutableStateOf(ZekrPrefs.getPlaybackMode(ctx)) }
