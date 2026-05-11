@@ -73,12 +73,13 @@ class AzanSoundService : Service() {
         startForeground(NOTIF_ID, buildNotification(prayerName, notifId))
 
         // فتح شاشة الأذان
-        Intent(this, AzanFullscreenActivity::class.java).apply {
-    putExtra("prayer_name", prayerName)
-    putExtra("notif_id", notifId)
-    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NO_USER_ACTION)
-        }  
-        )
+        startActivity(
+    Intent(this, AzanFullscreenActivity::class.java).apply {
+        putExtra("prayer_name", prayerName)
+        putExtra("notif_id", notifId)
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NO_USER_ACTION)
+    }
+)
 
         // AudioFocus
         audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
