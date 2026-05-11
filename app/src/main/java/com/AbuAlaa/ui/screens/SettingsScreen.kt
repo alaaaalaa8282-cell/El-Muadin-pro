@@ -185,9 +185,11 @@ fun SettingsScreen(
 
                     if (s.locationMode == LocationMode.MANUAL) {
                         Spacer(Modifier.height(12.dp))
+                       var cityInput by remember(s.manualCity) { mutableStateOf(s.manualCity) }
+                       var countryInput by remember(s.manualCountry) { mutableStateOf(s.manualCountry) }
                         OutlinedTextField(
-                            value = s.manualCity,
-                            onValueChange = { vm.setManual(it, s.manualCountry) },
+                            value = cityInput,
+                            onValueChange = { cityInput = it },
                             label = { Text("المدينة") },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
@@ -198,8 +200,8 @@ fun SettingsScreen(
                         )
                         Spacer(Modifier.height(8.dp))
                         OutlinedTextField(
-                            value = s.manualCountry,
-                            onValueChange = { vm.setManual(s.manualCity, it) },
+                            value = countryInput,
+                            onValueChange = { countryInput = it },
                             label = { Text("الدولة") },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
@@ -208,6 +210,9 @@ fun SettingsScreen(
                                 focusedLabelColor = MaterialTheme.colorScheme.primary
                             )
                         )
+                 LaunchedEffect(cityInput, countryInput) {
+    vm.setManual(cityInput, countryInput)
+                 }
                     } else {
                         Spacer(Modifier.height(8.dp))
                         TextButton(onClick = {
