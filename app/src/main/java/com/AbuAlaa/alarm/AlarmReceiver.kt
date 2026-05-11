@@ -4,15 +4,12 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.telephony.TelephonyManager
 import com.AbuAlaa.data.AdhanSound
 
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        // لو في مكالمة - ما نشغلش
-        val tm = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        if (tm.callState != TelephonyManager.CALL_STATE_IDLE) return
+        
 
         val title          = intent.getStringExtra(EXTRA_TITLE) ?: "حان وقت الصلاة"
         val adhanSoundName = intent.getStringExtra(EXTRA_ADHAN_SOUND) ?: AdhanSound.MAKKAH.name
