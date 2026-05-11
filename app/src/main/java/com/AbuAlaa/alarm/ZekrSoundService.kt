@@ -47,7 +47,7 @@ class ZekrSoundService : Service() {
     focusLost = true
     mediaPlayer?.pause()
 }
-            }
+            
 
             // تخفيض الصوت مؤقتاً - نكمل بصوت أقل
             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK -> {
