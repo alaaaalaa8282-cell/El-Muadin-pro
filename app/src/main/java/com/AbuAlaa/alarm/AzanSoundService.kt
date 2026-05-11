@@ -36,8 +36,8 @@ class AzanSoundService : Service() {
 
     private val focusListener = AudioManager.OnAudioFocusChangeListener { change ->
         when (change) {
-            AudioManager.AUDIOFOCUS_LOSS,
-            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT -> stopSelf()
+            AudioManager.AUDIOFOCUS_LOSS -> stopSelf()
+            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT -> mediaPlayer?.pause()
             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK ->
                 mediaPlayer?.setVolume(0.2f, 0.2f)
             AudioManager.AUDIOFOCUS_GAIN ->
